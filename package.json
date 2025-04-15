@@ -1,0 +1,188 @@
+{
+  "name": "auto-dependency-installer",
+  "displayName": "Auto Dependency Installer",
+  "description": "Automatically detect and install missing dependencies for your project directly from Visual Studio Code!",
+  "version": "0.0.2",
+  "publisher": "GIRISHKOR",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#2B2B52",
+    "theme": "dark"
+  },
+  "categories": [
+    "Extension Packs",
+    "Programming Languages",
+    "SCM Providers",
+    "Formatters",
+    "Linters",
+    "Debuggers",
+    "Testing",
+    "Data Science",
+    "Machine Learning",
+    "Visualization",
+    "Notebooks",
+    "Azure",
+    "AI",
+    "Other"
+  ],
+  "keywords": [
+    "auto-install",
+    "dependencies",
+    "npm",
+    "yarn",
+    "pnpm",
+    "bun",
+    "package-manager",
+    "dependency-manager",
+    "productivity",
+    "automation",
+    "developer-tools",
+    "javascript",
+    "typescript",
+    "webdev",
+    "vscode-extension",
+    "devops",
+    "workflow",
+    "code-analysis",
+    "monorepo",
+    "lockfile",
+    "project-setup",
+    "missing-dependencies",
+    "auto-detect",
+    "smart-install",
+    "time-saver"
+  ],
+  "main": "./extension.js",
+  "activationEvents": [
+    "onCommand:auto-dependency-installer.installDependencies",
+    "onCommand:auto-dependency-installer.configure",
+    "workspaceContains:package.json",
+    "workspaceContains:yarn.lock",
+    "workspaceContains:pnpm-lock.yaml",
+    "workspaceContains:bun.lockb",
+    "workspaceContains:bower.json",
+    "workspaceContains:volta.json"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "auto-dependency-installer.installDependencies",
+        "title": "Install Missing Dependencies",
+        "category": "Auto Dependency Installer"
+      },
+      {
+        "command": "auto-dependency-installer.configure",
+        "title": "Configure Settings",
+        "category": "Auto Dependency Installer"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "auto-dependency-installer.installDependencies",
+          "group": "dependencies"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "auto-dependency-installer.installDependencies"
+        },
+        {
+          "command": "auto-dependency-installer.configure"
+        }
+      ]
+    },
+    "statusBar": {
+      "alignment": "right",
+      "command": "auto-dependency-installer.installDependencies"
+    },
+    "configuration": {
+      "title": "Auto Dependency Installer",
+      "properties": {
+        "auto-dependency-installer.preferredPackageManager": {
+          "type": "string",
+          "enum": [
+            "npm",
+            "yarn",
+            "pnpm",
+            "bun",
+            "bower",
+            "volta",
+            "jspm",
+            "ied",
+            "cnpm",
+            "ntl",
+            "tnpm",
+            "corepack"
+          ],
+          "default": "npm",
+          "description": "Fallback package manager when no lock file is detected."
+        },
+        "auto-dependency-installer.autoDetect": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable automatic package manager detection via lock files."
+        },
+        "auto-dependency-installer.notifyOnMissing": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show notification when missing dependencies are detected."
+        },
+        "auto-dependency-installer.installAutomatically": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically install missing dependencies without prompting."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^20.17.30",
+    "@types/vscode": "^1.75.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.24.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/girish-kor/auto-dependency-installer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/girish-kor/auto-dependency-installer/issues"
+  },
+  "homepage": "https://github.com/girish-kor/auto-dependency-installer#readme",
+  "badges": [
+    {
+      "url": "https://img.shields.io/visual-studio-marketplace/v/GIRISHKOR.auto-dependency-installer?label=Version&color=007bff&style=flat&logo=visual-studio-code",
+      "href": "https://marketplace.visualstudio.com/items?itemName=GIRISHKOR.auto-dependency-installer",
+      "description": "Latest Version"
+    },
+    {
+      "url": "https://img.shields.io/visual-studio-marketplace/d/GIRISHKOR.auto-dependency-installer?label=Downloads&color=28a745&style=flat&logo=download",
+      "href": "https://marketplace.visualstudio.com/items?itemName=GIRISHKOR.auto-dependency-installer",
+      "description": "Download Count"
+    },
+    {
+      "url": "https://img.shields.io/github/stars/girish-kor/auto-dependency-installer?style=flat&label=Stars&color=6f42c1&logo=github",
+      "href": "https://github.com/girish-kor/auto-dependency-installer",
+      "description": "GitHub Stars"
+    },
+    {
+      "url": "https://img.shields.io/badge/License-MIT-17a2b8?style=flat&logo=openjdk",
+      "href": "https://opensource.org/licenses/MIT",
+      "description": "License"
+    }
+  ],
+  "license": "MIT"
+}
